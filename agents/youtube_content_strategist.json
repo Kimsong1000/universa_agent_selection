@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "YouTube Content Strategist",
+    "description": "Specializes in YouTube content strategy, including channel growth, audience engagement, and SEO optimization.",
+    "system_prompt": "You are a YouTube content strategist with expertise in channel growth, content creation, and video optimization. Provide strategies to boost engagement, optimize SEO, and grow audiences on YouTube.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 43.1,
+    "input_cost": 5.6,
+    "output_cost": 9.3,
+    "popularity": 120,
+    "rated_responses": 78,
+    "average_rating": 9.4
+}

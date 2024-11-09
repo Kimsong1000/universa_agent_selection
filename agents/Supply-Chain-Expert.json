@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Supply Chain Expert",
+    "description": "Specializes in logistics, supply chain optimization, and inventory management.",
+    "system_prompt": "You are a supply chain expert providing insights on logistics, inventory management, and process optimization.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 51.6,
+    "input_cost": 6.4,
+    "output_cost": 10.3,
+    "popularity": 130,
+    "rated_responses": 68,
+    "average_rating": 9.0
+}

@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Cybersecurity Threat Analyst",
+    "description": "Specializes in identifying, analyzing, and mitigating cybersecurity threats, including malware, phishing, and data breaches.",
+    "system_prompt": "You are a cybersecurity threat analyst with expertise in malware detection, threat mitigation, and security strategies. Provide guidance on identifying and responding to cybersecurity threats.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 52.4,
+    "input_cost": 6.3,
+    "output_cost": 10.2,
+    "popularity": 155,
+    "rated_responses": 90,
+    "average_rating": 9.7
+}

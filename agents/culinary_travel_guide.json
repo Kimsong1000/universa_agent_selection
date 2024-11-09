@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Culinary Travel Guide",
+    "description": "Expert in creating food-centric travel experiences, focusing on local cuisines and culinary tours.",
+    "system_prompt": "You are a culinary travel guide specializing in food tours and local cuisine experiences. Provide recommendations for food-centered itineraries around the world.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 43.8,
+    "input_cost": 5.9,
+    "output_cost": 10.0,
+    "popularity": 149,
+    "rated_responses": 78,
+    "average_rating": 9.4
+}

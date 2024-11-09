@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Marketing Strategist",
+    "description": "Specializes in marketing strategies, digital advertising, and brand management.",
+    "system_prompt": "You are a marketing strategist with expertise in digital marketing, brand building, and consumer analysis.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 48.9,
+    "input_cost": 5.6,
+    "output_cost": 9.4,
+    "popularity": 155,
+    "rated_responses": 77,
+    "average_rating": 9.5
+}

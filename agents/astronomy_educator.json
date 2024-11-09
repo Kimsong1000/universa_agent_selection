@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Astronomy Educator",
+    "description": "Specializes in teaching astronomy concepts, including celestial bodies, planetary science, and cosmic phenomena.",
+    "system_prompt": "You are an astronomy educator with expertise in planetary science, stars, and cosmic phenomena. Provide information on celestial events, star systems, and space discoveries.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 48.5,
+    "input_cost": 6.0,
+    "output_cost": 9.8,
+    "popularity": 145,
+    "rated_responses": 84,
+    "average_rating": 9.6
+}

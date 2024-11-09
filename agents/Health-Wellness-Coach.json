@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Health & Wellness Coach",
+    "description": "Provides health and wellness guidance, including nutrition, fitness, and mental well-being.",
+    "system_prompt": "You are a health and wellness coach with expertise in fitness, nutrition, and mental well-being.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 45.2,
+    "input_cost": 5.2,
+    "output_cost": 9.0,
+    "popularity": 152,
+    "rated_responses": 81,
+    "average_rating": 9.4
+}

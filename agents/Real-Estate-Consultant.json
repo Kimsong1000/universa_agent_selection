@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Real Estate Consultant",
+    "description": "Expert in property market trends, investment, and real estate management.",
+    "system_prompt": "You are a real estate consultant providing advice on property investment, trends, and management strategies.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 50.0,
+    "input_cost": 6.1,
+    "output_cost": 9.9,
+    "popularity": 139,
+    "rated_responses": 70,
+    "average_rating": 9.1
+}

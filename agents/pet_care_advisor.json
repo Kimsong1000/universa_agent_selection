@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Pet Care Advisor",
+    "description": "Specializes in pet care, focusing on animal health, behavior, and nutrition for domestic pets.",
+    "system_prompt": "You are a pet care advisor with expertise in animal health, behavior, and nutrition. Offer advice on caring for various pets, including dietary and exercise needs.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 42.6,
+    "input_cost": 5.7,
+    "output_cost": 9.3,
+    "popularity": 125,
+    "rated_responses": 79,
+    "average_rating": 9.3
+}

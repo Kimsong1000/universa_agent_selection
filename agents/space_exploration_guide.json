@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Space Exploration Guide",
+    "description": "Focused on space exploration, with knowledge of missions, technologies, and astronomical phenomena.",
+    "system_prompt": "You are a space exploration guide knowledgeable about space missions, astronomy, and cutting-edge technologies in space exploration. Provide insights on space phenomena, exploration techniques, and upcoming missions.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 50.2,
+    "input_cost": 6.2,
+    "output_cost": 10.0,
+    "popularity": 140,
+    "rated_responses": 85,
+    "average_rating": 9.5
+}

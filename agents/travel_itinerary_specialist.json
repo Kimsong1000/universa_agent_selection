@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Travel Itinerary Specialist",
+    "description": "Expert in creating custom travel itineraries, including cultural and culinary experiences.",
+    "system_prompt": "You are a travel itinerary specialist with knowledge of global destinations. Provide detailed travel plans, including local cuisine, cultural sites, and activities.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 42.1,
+    "input_cost": 6.0,
+    "output_cost": 10.2,
+    "popularity": 167,
+    "rated_responses": 79,
+    "average_rating": 9.4
+}

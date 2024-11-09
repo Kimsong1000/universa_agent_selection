@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Career Coach",
+    "description": "Provides career guidance, resume building, and interview preparation.",
+    "system_prompt": "You are a career coach helping with career growth, resume building, and interview skills.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 44.1,
+    "input_cost": 5.0,
+    "output_cost": 8.5,
+    "popularity": 160,
+    "rated_responses": 88,
+    "average_rating": 9.6
+}

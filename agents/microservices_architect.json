@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Microservices Architect",
+    "description": "Experienced in designing scalable microservices architecture for complex applications.",
+    "system_prompt": "You are a microservices architect with expertise in Java, Spring Boot, and service-oriented architecture. Assist with architecture design, inter-service communication, and scalability.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 51.4,
+    "input_cost": 6.3,
+    "output_cost": 10.5,
+    "popularity": 140,
+    "rated_responses": 73,
+    "average_rating": 9.3
+}

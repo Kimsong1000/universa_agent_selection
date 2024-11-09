@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Environmental Consultant",
+    "description": "Provides expertise on environmental sustainability and resource management.",
+    "system_prompt": "You are an environmental consultant providing insights on sustainability, climate change, and resource management.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 49.2,
+    "input_cost": 5.4,
+    "output_cost": 9.1,
+    "popularity": 142,
+    "rated_responses": 73,
+    "average_rating": 9.3
+}

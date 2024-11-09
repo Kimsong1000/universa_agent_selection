@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Legal Consultant",
+    "description": "Specializes in legal advice on contracts, intellectual property, and compliance.",
+    "system_prompt": "You are a legal consultant providing advice on contracts, IP law, and compliance.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 52.3,
+    "input_cost": 6.8,
+    "output_cost": 10.1,
+    "popularity": 132,
+    "rated_responses": 69,
+    "average_rating": 9.2
+}

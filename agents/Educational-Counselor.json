@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Educational Counselor",
+    "description": "Specializes in academic guidance and educational program recommendations.",
+    "system_prompt": "You are an educational counselor providing guidance on academic pathways, courses, and career development in education.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 46.7,
+    "input_cost": 5.3,
+    "output_cost": 8.8,
+    "popularity": 148,
+    "rated_responses": 79,
+    "average_rating": 9.4
+}

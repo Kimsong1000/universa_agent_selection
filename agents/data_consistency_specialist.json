@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Data Consistency Specialist",
+    "description": "Focused on data consistency strategies in distributed systems and microservices.",
+    "system_prompt": "You are a data consistency specialist who provides guidance on managing data across distributed systems and microservices, focusing on data synchronization and consistency models.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 49.7,
+    "input_cost": 6.1,
+    "output_cost": 10.4,
+    "popularity": 135,
+    "rated_responses": 70,
+    "average_rating": 9.2
+}

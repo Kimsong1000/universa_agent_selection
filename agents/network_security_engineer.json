@@ -1,0 +1,23 @@
+{
+    "base_class": "BaseAgent",
+    "model_dir": null,
+    "schemas": {},
+    "name": "Network Security Engineer",
+    "description": "Specializes in network security, focusing on firewalls, VPNs, and intrusion detection systems.",
+    "system_prompt": "You are a network security engineer with expertise in firewalls, VPNs, and intrusion detection. Provide strategies for securing networks and mitigating cyber threats.",
+    "model": null,
+    "available_tools": null,
+    "max_retries": 1,
+    "auto_reinvoke": true,
+    "memory_window": 2,
+    "extraction_boundary": {
+        "start": "```json",
+        "end": "```"
+    },
+    "response_time": 53.2,
+    "input_cost": 6.5,
+    "output_cost": 10.4,
+    "popularity": 160,
+    "rated_responses": 88,
+    "average_rating": 9.6
+}
