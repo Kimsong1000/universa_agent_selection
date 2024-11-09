@@ -1,95 +1,89 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Tuple
-
-import faiss
 import numpy as np
-from sentence_transformers import CrossEncoder, SentenceTransformer
+import faiss
+from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
 
+class BaseEmbeddingFunction:
+    def __init__(self, model_name: str = 'all-mpnet-base-v2'):
+        self.model = SentenceTransformer(model_name)
+
+    def create_embeddings(self, texts: List[str]) -> np.ndarray:
+        if isinstance(texts, str):
+            texts = [texts]
+        embeddings = self.model.encode(texts, convert_to_tensor=False)
+        return np.array(embeddings)
+
+class CrossEncoderRanker:
+    def __init__(self, model_name="cross-encoder/ms-marco-MiniLM-L-6-v2"):
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    
+    def rank(self, query: str, candidates: List[dict]) -> Tuple[Dict, float]:
+        scores = []
+        for agent in candidates:
+            inputs = self.tokenizer(query, agent["description"], 
+                                  return_tensors="pt", 
+                                  truncation=True, 
+                                  padding=True)
+            outputs = self.model(**inputs)
+            score = outputs.logits.item()
+            scores.append((agent, score))
+        
+        scores.sort(key=lambda x: x[1], reverse=True)
+        return scores[0]
 
 class SelectionAlgorithm(ABC):
-    """
-    All solutions must implement this interface.
-    """
-    def __init__(self, agents: List[Dict[str, Any]], ids: List[str]) -> None:
-        self.agents = agents
-        self.ids = ids
-        self.initialize(agents, ids)
-
     @abstractmethod
-    def select(self, query: str, **kwargs) -> str:
-        # TODO: Add agent selection logic here
-        ...
+    def select(self, query: str, **kwargs) -> Tuple[str, str]:
+        pass
 
-    @abstractmethod
-    def initialize(self, agents: List[Dict[str, Any]], ids: List[str]) -> str:
-        # TODO: Initialize vectorstore
-        ...
-
-
+# Simple example algorithm that just returns the first agent
 class ExampleAlgorithm(SelectionAlgorithm):
     def __init__(self, agents: List[Dict], agent_ids: List[str]):
         self.agents = agents
-        self.agent_ids = agent_ids
+        self.ids = agent_ids
     
-    def select(self, query: str) -> str:
-        # This is just a dummy implementation that always returns the first agent
-        return self.agent_ids[0]
-
+    def select(self, query: str, **kwargs) -> Tuple[str, str]:
+        # Just return the first agent as an example
+        return self.ids[0], self.agents[0]['name']
 
 class FaissSelectionAlgorithm(SelectionAlgorithm):
-    """
-    FAISS-based selection algorithm with cross-encoder reranking.
-    """
     def __init__(self, agents: List[Dict], agent_ids: List[str]):
-        self.initialize(agents, agent_ids)
-
-    def initialize(self, agents: List[Dict], agent_ids: List[str]) -> None:
         self.agents = agents
         self.ids = agent_ids
+        self.embedding_function = BaseEmbeddingFunction()
+        self.cross_encoder = CrossEncoderRanker()
         
-        # Changed to all-mpnet-base-v2 model
-        self.embedding_model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-        self.cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+        descriptions = [agent["description"] for agent in agents]
+        embeddings = self.embedding_function.create_embeddings(descriptions)
         
-        # Create FAISS index
-        agent_descriptions = [agent['description'] for agent in agents]
-        embeddings = self.embedding_model.encode(agent_descriptions)
-        
-        dimension = embeddings.shape[1]  # Note: MPNet creates 768-dimensional embeddings
+        dimension = embeddings.shape[1]
         self.index = faiss.IndexFlatL2(dimension)
-        self.index.add(embeddings.astype('float32'))
+        self.index.add(embeddings)
 
-    def select(self, query: str) -> Tuple[str, str]:
-        # Get embeddings for the query
-        query_embedding = self.embedding_model.encode([query])
+    def select(self, query: str, **kwargs) -> Tuple[str, str]:
+        query_embedding = self.embedding_function.create_embeddings([query])
+        k = 3
+        D, I = self.index.search(query_embedding, k)
         
-        # Search FAISS index
-        D, I = self.index.search(query_embedding, k=3)
-        
-        # Get candidate descriptions for reranking
         candidates = [self.agents[idx] for idx in I[0]]
         candidate_ids = [self.ids[idx] for idx in I[0]]
         
-        # Debug logging
-        print(f"\nQuery: {query}")
-        print("Top candidates:")
-        for i, (cand, score) in enumerate(zip(candidates, D[0])):
-            print(f"{i+1}. {cand['name']} (distance: {score:.3f})")
+        if kwargs.get('verbose', False):
+            print(f"\nQuery: {query}")
+            print("FAISS Top candidates:")
+            for i, (cand, score) in enumerate(zip(candidates, D[0])):
+                print(f"{i+1}. {cand['name']} (distance: {score:.3f})")
         
-        # Prepare pairs for cross-encoder
-        pairs = [[query, cand['description']] for cand in candidates]
-        
-        # Get scores from cross-encoder
-        scores = self.cross_encoder.predict(pairs)
-        
-        # Debug logging
-        print("\nCross-encoder scores:")
-        for i, (cand, score) in enumerate(zip(candidates, scores)):
-            print(f"{cand['name']}: {score:.3f}")
-        
-        # Get best match
-        best_idx = np.argmax(scores)
+        best_agent, best_score = self.cross_encoder.rank(query, candidates)
+        best_idx = candidates.index(best_agent)
         selected_id = candidate_ids[best_idx]
-        selected_name = candidates[best_idx]['name']
         
-        return selected_id, selected_name
+        if kwargs.get('verbose', False):
+            print("\nCross-encoder final selection:")
+            print(f"Selected: {best_agent['name']} (score: {best_score:.3f})")
+        
+        return selected_id, best_agent['name']
